@@ -1,6 +1,8 @@
 package info.services;
 
+import info.entities.Role;
 import info.entities.User;
+import info.entities.enums.RoleEnum;
 import info.repositories.RoleRepository;
 import info.repositories.UserRepository;
 import jakarta.transaction.Transactional;
@@ -36,7 +38,15 @@ public class UserService implements UserDetailsService {
         );
     }
     public void save(User user) {
-        //todo
+        List<RoleEnum> roleEnumList = List.of(RoleEnum.values());
+        for (Role role : user.getRoleCollection()) {
+            if(!roleEnumList.contains(role.getName()))
+                throw new RuntimeException("No such role in roleEnum: " + role.getName());
+            roleRepository.findByName(role.getName())
+                    .orElseThrow(() -> new RuntimeException("No such role in table roles: " + role.getName()));
+        }
+        user.setRoleCollection(user.getRoleCollection());
+        userRepository.save(user);
     }
     public User findById(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -48,9 +58,15 @@ public class UserService implements UserDetailsService {
         return (List<User>) userRepository.findAll();
     }
     public void updateById(Long id, User user) {
-        //todo
+        User updatableUser = findById(id);
+        if (updatableUser == null || user == null)
+            return;
+        updatableUser.setUsername(          user.getUsername()          );
+        updatableUser.setPassword(          user.getPassword()          );
+        updatableUser.setRoleCollection(    user.getRoleCollection()    );
+        save(updatableUser);
     }
     public void deleteById(Long id) {
-        //todo
+        userRepository.deleteById(id);
     }
 }

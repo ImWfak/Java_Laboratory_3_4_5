@@ -25,7 +25,7 @@ public class StudentInfoService {
     }
     public void updateById(Long id, StudentInfo studentInfo) {
         StudentInfo updatableStudentInfo = findById(id);
-        if (updatableStudentInfo == null)
+        if (updatableStudentInfo == null || studentInfo == null)
             return;
         updatableStudentInfo.setApplicant(    studentInfo.getApplicant()    );
         updatableStudentInfo.setContract(     studentInfo.getContract()     );
@@ -35,7 +35,7 @@ public class StudentInfoService {
     }
     public void updateByApplicant_Id(Long applicant_Id, StudentInfo studentInfo) {
         StudentInfo updatableStudentInfo = findByApplicant_Id(applicant_Id);
-        if (updatableStudentInfo == null)
+        if (updatableStudentInfo == null || studentInfo == null)
             return;
         updatableStudentInfo.setApplicant(    studentInfo.getApplicant()    );
         updatableStudentInfo.setContract(     studentInfo.getContract()     );

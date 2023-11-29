@@ -22,7 +22,7 @@ public class ApplicantService {
     }
     public void updateById(Long id, Applicant applicant) {
         Applicant updatebleApplicant = findById(id);
-        if (updatebleApplicant == null)
+        if (updatebleApplicant == null || applicant == null)
             return;
         updatebleApplicant.setCode(       applicant.getCode()       );
         updatebleApplicant.setSurname(    applicant.getSurname()    );
