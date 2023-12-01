@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,19 +35,14 @@ public class UserService implements UserDetailsService {
                 user.getUsername(),
                 user.getPassword(),
                 user.getRoleCollection().stream().map(
-                        role -> new SimpleGrantedAuthority(role.getName().toString())
+                        role -> new SimpleGrantedAuthority(role.getRoleEnum().toString())
                 ).collect(Collectors.toList())
         );
     }
-    public void save(User user) {
-        List<RoleEnum> roleEnumList = List.of(RoleEnum.values());
-        for (Role role : user.getRoleCollection()) {
-            if(!roleEnumList.contains(role.getName()))
-                throw new RuntimeException("No such role in roleEnum: " + role.getName());
-            roleRepository.findByName(role.getName())
-                    .orElseThrow(() -> new RuntimeException("No such role in table roles: " + role.getName()));
-        }
-        user.setRoleCollection(user.getRoleCollection());
+    public void save(User user, RoleEnum roleEnum) {
+        Collection<Role> roleCollection = new ArrayList<>();
+        roleCollection.add(roleRepository.findByRoleEnum(roleEnum).get());
+        user.setRoleCollection(roleCollection);
         userRepository.save(user);
     }
     public User findById(Long id) {
@@ -59,12 +56,10 @@ public class UserService implements UserDetailsService {
     }
     public void updateById(Long id, User user) {
         User updatableUser = findById(id);
-        if (updatableUser == null || user == null)
-            return;
         updatableUser.setUsername(          user.getUsername()          );
         updatableUser.setPassword(          user.getPassword()          );
         updatableUser.setRoleCollection(    user.getRoleCollection()    );
-        save(updatableUser);
+        userRepository.save(user);
     }
     public void deleteById(Long id) {
         userRepository.deleteById(id);

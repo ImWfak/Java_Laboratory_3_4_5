@@ -1,6 +1,5 @@
 package info.services;
 
-import info.entities.Applicant;
 import info.entities.StudentInfo;
 import info.repositories.EmailRepository;
 import jakarta.mail.MessagingException;
@@ -22,7 +21,7 @@ import java.util.Objects;
 @Service
 public class EmailService implements EmailRepository {
     private final JavaMailSender javaMailSender;
-    private void writeApplicantAndStudentInfoToTXT(List<StudentInfo> studentInfoList, String filepath) {
+    /*public void writeApplicantAndStudentInfoToTXT(List<StudentInfo> studentInfoList, String filepath) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))) {
             for (StudentInfo studentInfo : studentInfoList) {
                 String line = String.format(
@@ -44,10 +43,9 @@ public class EmailService implements EmailRepository {
         } catch (IOException ioException) {
             throw new RuntimeException(ioException);
         }
-    }
-    private void writeApplicantAndStudentInfoToCSV(List<Applicant> applicantList, String filepath) {}
+    }*/
     @Override
-    public void sendMailWithAttachment(String to, String subject, String text, String pathToAttachment) {
+    public void sendMailWithAttachment(String to, String subject, String text, String filepath) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
@@ -56,7 +54,7 @@ public class EmailService implements EmailRepository {
             mimeMessageHelper.setTo(to);
             mimeMessageHelper.setText(text);
             mimeMessageHelper.setSubject(subject);
-            FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
+            FileSystemResource file = new FileSystemResource(new File(filepath));
             mimeMessageHelper.addAttachment(Objects.requireNonNull(file.getFilename()), file);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException messagingException) {

@@ -18,7 +18,7 @@ public class StudentInfo {
     private Long id;
     @OneToOne
     @JoinColumn(
-            name = "applicant_id",
+            name = "applicantId",
             unique = true,
             nullable = false
     )

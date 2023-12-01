@@ -23,5 +23,5 @@ public class Role {
             unique = true,
             nullable = false
     )
-    private RoleEnum name;
+    private RoleEnum roleEnum;
 }

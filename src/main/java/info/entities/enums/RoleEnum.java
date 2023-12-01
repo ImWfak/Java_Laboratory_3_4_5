@@ -1,6 +1,6 @@
 package info.entities.enums;
 
 public enum RoleEnum {
-    Admin,
-    User
+    ROLE_USER,
+    ROLE_ADMIN
 }

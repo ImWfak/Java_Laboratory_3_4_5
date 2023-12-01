@@ -22,8 +22,6 @@ public class ApplicantService {
     }
     public void updateById(Long id, Applicant applicant) {
         Applicant updatebleApplicant = findById(id);
-        if (updatebleApplicant == null || applicant == null)
-            return;
         updatebleApplicant.setCode(       applicant.getCode()       );
         updatebleApplicant.setSurname(    applicant.getSurname()    );
         updatebleApplicant.setName(       applicant.getName()       );
@@ -31,9 +29,11 @@ public class ApplicantService {
         updatebleApplicant.setBirthday(   applicant.getBirthday()   );
         updatebleApplicant.setGender(     applicant.getGender()     );
         updatebleApplicant.setRating(     applicant.getRating()     );
-        save(updatebleApplicant);
+        applicantRepository.save(updatebleApplicant);
     }
     public void deleteById(Long id) {
+        if (applicantRepository.findById(id).isEmpty())
+            return;
         applicantRepository.deleteById(id);
     }
 }
