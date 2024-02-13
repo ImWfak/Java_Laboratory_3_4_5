@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8cf3d1eb-990f-426c-92dc-b70b058868ec" name="Changes" comment="Massive refactor of the project. Added entities, enums, DTOs, regexes records, repositories, services, controllers and exceptions for applicants and students. Also, there is one todo in StudentEntity">
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/md5-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/dependencies-accessors/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/846a0fa4-2f11-4ccd-b6ba-9dbee6bc7cce.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/846a0fa4-2f11-4ccd-b6ba-9dbee6bc7cce/storage_v2/_src_/database/Java_Laboratory_3_4_5.z0FwPw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/846a0fa4-2f11-4ccd-b6ba-9dbee6bc7cce/storage_v2/_src_/database/Java_Laboratory_3_4_5.z0FwPw/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/846a0fa4-2f11-4ccd-b6ba-9dbee6bc7cce/storage_v2/_src_/database/Java_Laboratory_3_4_5.z0FwPw/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/846a0fa4-2f11-4ccd-b6ba-9dbee6bc7cce/storage_v2/_src_/database/Java_Laboratory_3_4_5.z0FwPw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/Java_Laboratory_3_4_5.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/controllers/ApplicantController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/controllers/StudentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/entities/ApplicantEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/entities/StudentEntity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/enums/GenderEnum.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/enums/GenderEnumConverter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/exceptions/applicantExceptions/WrongApplicantCodeException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/exceptions/applicantExceptions/WrongApplicantRatingException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/exceptions/studentExceptions/WrongStudentEmailException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/regexes/ApplicantRegexes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/regexes/StudentRegexes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/repositories/ApplicantRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/repositories/StudentRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/services/ApplicantService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/edu/services/StudentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/edu/testServices/TestApplicantService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/edu.testServices.TestApplicantService.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/edu.testServices.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/db/migration/V1__CREATE_TABLES.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/TEST-edu.testServices.TestApplicantService.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/StudentController.class.uniqueId0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/TestApplicantService.class.uniqueId0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/DTO/InputApplicantDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/DTO/InputStudentDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/DTO/OutputApplicantDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/DTO/OutputStudentDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/controllers/ApplicantController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/controllers/StudentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/entities/ApplicantEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/entities/StudentEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/enums/GenderEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/enums/GenderEnumConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/enums/RoleEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/enums/RoleEnumConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/applicantExceptions/ApplicantCodeExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/applicantExceptions/ApplicantDoesNotExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/applicantExceptions/WrongApplicantCodeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/applicantExceptions/WrongApplicantRatingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/enumsExceptions/UnknownValueForGenderEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/enumsExceptions/UnknownValueForRoleEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/studentExceptions/StudentDoesNotExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/studentExceptions/StudentEmailExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/exceptions/studentExceptions/WrongStudentEmailException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/regexes/ApplicantRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/regexes/StudentRegexes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/repositories/ApplicantRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/repositories/StudentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/services/ApplicantService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/services/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/JavaLaboratory345Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/configs/CustomAuthenticationSuccess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/configs/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/configs/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/controllers/ApplicantController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/controllers/EmailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/controllers/LoadController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/controllers/RegisterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/controllers/StudentInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/Applicant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/EmailData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/StudentInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/enums/GenderEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/entities/enums/RoleEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/repositories/ApplicantRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/repositories/EmailRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/repositories/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/repositories/StudentInfoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/services/ApplicantService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/services/EmailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/services/StudentInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/info/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="077c729e-921b-48dc-8d28-9ef9ad829661" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/edu/services/ApplicantService.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2bP1jcMmpObUm1BYJVKOpWeft9w" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Code/Java/Java_Laboratory_3_4_5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "spring.configuration.checksum": "0881a3519b3edf5451cfa3f2275b2327",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Java_Laboratory_3_4_5.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8cf3d1eb-990f-426c-92dc-b70b058868ec" name="Changes" comment="" />
+      <created>1706102036519</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706102036519</updated>
+      <workItem from="1706102037397" duration="10000" />
+      <workItem from="1706102052747" duration="29264000" />
+      <workItem from="1706171344011" duration="13024000" />
+      <workItem from="1706625632594" duration="7918000" />
+      <workItem from="1706816033944" duration="102000" />
+      <workItem from="1706816142674" duration="18182000" />
+      <workItem from="1706887851610" duration="10867000" />
+      <workItem from="1706925635080" duration="29739000" />
+      <workItem from="1707143480416" duration="620000" />
+      <workItem from="1707144196348" duration="7423000" />
+      <workItem from="1707170010162" duration="2170000" />
+      <workItem from="1707172414194" duration="3491000" />
+      <workItem from="1707210757101" duration="1734000" />
+      <workItem from="1707260983898" duration="623000" />
+      <workItem from="1707481950297" duration="7581000" />
+      <workItem from="1707582514276" duration="3217000" />
+      <workItem from="1707595813416" duration="1682000" />
+      <workItem from="1707611658711" duration="1212000" />
+      <workItem from="1707618298135" duration="224000" />
+      <workItem from="1707651103712" duration="5622000" />
+      <workItem from="1707656738690" duration="25229000" />
+      <workItem from="1707735652430" duration="14490000" />
+      <workItem from="1707814460131" duration="10281000" />
+      <workItem from="1707865129389" duration="245000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactor. Done all controllers" />
+    <MESSAGE value="Massive refactor of the project. Added entities, enums, DTOs, repositories, services, controllers and exceptions with regexes for applicants and students. Also, there is one todo in StudentEntity" />
+    <MESSAGE value="Massive refactor of the project. Added entities, enums, DTOs, regexes records, repositories, services, controllers and exceptions for applicants and students. Also, there is one todo in StudentEntity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Massive refactor of the project. Added entities, enums, DTOs, regexes records, repositories, services, controllers and exceptions for applicants and students. Also, there is one todo in StudentEntity" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="student.applicant" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
