@@ -5,8 +5,8 @@ import edu.exceptions.enumsExceptions.UnknownValueForGenderEnum;
 import java.util.Arrays;
 
 public enum GenderEnum {
-    MALE("Male"),
-    FEMALE("Female");
+    MALE("male"),
+    FEMALE("female");
     private String gender;
     GenderEnum(String gender) {
         this.gender = gender;
@@ -23,8 +23,8 @@ public enum GenderEnum {
         }
         throw new UnknownValueForGenderEnum(
                 "This gender does not exist!\n"
-                + "available genders: " + Arrays.toString(GenderEnum.values()) + "\n"
-                + "inputted gender: " + gender
+                        + "available genders: " + Arrays.toString(GenderEnum.values()) + "\n"
+                        + "inputted gender: " + gender
         );
     }
 }

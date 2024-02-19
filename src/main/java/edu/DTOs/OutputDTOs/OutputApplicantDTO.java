@@ -1,39 +1,38 @@
-package edu.DTO;
+package edu.DTOs.OutputDTOs;
 
 import edu.entities.ApplicantEntity;
-import edu.entities.StudentEntity;
-import edu.enums.GenderEnum;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class OutputApplicantDTO {
     private Long id;
-    private StudentEntity student;
+    private Long student_id;
     private String code;
     private String surname;
     private String name;
     private String lastname;
     private LocalDate birthday;
-    private GenderEnum gender;
+    private String gender;
     private Float rating;
 
     public OutputApplicantDTO(ApplicantEntity applicant) {
         id = applicant.getId();
-        student = applicant.getStudent();
+        if (applicant.getStudent() != null) {
+            student_id = applicant.getStudent().getId();
+        }
+        else {
+            student_id = null;
+        }
         code = applicant.getCode();
         surname = applicant.getSurname();
         name = applicant.getName();
         lastname = applicant.getLastname();
         birthday = applicant.getBirthday();
-        gender = applicant.getGender();
+        gender = applicant.getGender().toString();
         rating = applicant.getRating();
     }
 }

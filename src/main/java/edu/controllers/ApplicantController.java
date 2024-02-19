@@ -1,7 +1,7 @@
 package edu.controllers;
 
-import edu.DTO.InputApplicantDTO;
-import edu.DTO.OutputApplicantDTO;
+import edu.DTOs.InputDTOs.InputApplicantDTO;
+import edu.DTOs.OutputDTOs.OutputApplicantDTO;
 import edu.exceptions.applicantExceptions.ApplicantCodeExistException;
 import edu.exceptions.applicantExceptions.ApplicantDoesNotExistException;
 import edu.exceptions.applicantExceptions.WrongApplicantCodeException;
@@ -21,9 +21,9 @@ public class ApplicantController {
     private ApplicantService applicantService;
 
     @PostMapping("/save")
-    public ResponseEntity save(@RequestBody InputApplicantDTO inputApplicantDTO) {
+    public ResponseEntity save(@RequestBody InputApplicantDTO inputApplicant) {
         try {
-            OutputApplicantDTO outputApplicantDTO = applicantService.save(inputApplicantDTO);
+            OutputApplicantDTO outputApplicantDTO = applicantService.save(inputApplicant);
             return ResponseEntity.ok().body(outputApplicantDTO);
         }
         catch (
@@ -75,10 +75,10 @@ public class ApplicantController {
     @PatchMapping("/updateById")
     public ResponseEntity updateById(
             @RequestParam("id") Long id,
-            @RequestBody InputApplicantDTO inputApplicantDTO
+            @RequestBody InputApplicantDTO inputApplicant
     ) {
         try {
-            OutputApplicantDTO outputApplicantDTO = applicantService.updateById(id, inputApplicantDTO);
+            OutputApplicantDTO outputApplicantDTO = applicantService.updateById(id, inputApplicant);
             return ResponseEntity.ok().body(outputApplicantDTO);
         }
         catch (

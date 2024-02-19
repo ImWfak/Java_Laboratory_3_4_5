@@ -1,7 +1,7 @@
 package edu.services;
 
-import edu.DTO.InputStudentDTO;
-import edu.DTO.OutputStudentDTO;
+import edu.DTOs.InputDTOs.InputStudentDTO;
+import edu.DTOs.OutputDTOs.OutputStudentDTO;
 import edu.entities.StudentEntity;
 import edu.exceptions.applicantExceptions.ApplicantDoesNotExistException;
 import edu.exceptions.studentExceptions.StudentDoesNotExistException;
@@ -25,70 +25,52 @@ public class StudentService {
     private ApplicantRepository applicantRepository;
     private StudentRepository studentRepository;
 
-    private void validInputStudentDTO(InputStudentDTO inputStudentDTO)
-            throws ApplicantDoesNotExistException,
-            WrongStudentEmailException {
-        if (applicantRepository.findById(inputStudentDTO.getApplicant_id()).orElse(null) == null) {
-            throw new ApplicantDoesNotExistException(
-                    "Applicant with this id does not exist, inputted id: " + inputStudentDTO.getApplicant_id()
-            );
-        }
-        if (!Pattern.compile(StudentRegexes.EMAIL_REGEX).matcher(inputStudentDTO.getEmail()).matches()) {
-            throw new WrongStudentEmailException(
-                    "Wrong student email!\n"
-                    + "email regex: '" + ApplicantRegexes.CODE_REGEX + "'\n"
-                    + "inputted email: " + inputStudentDTO.getEmail()
-            );
-        }
-    }
-
-    public OutputStudentDTO save(InputStudentDTO inputStudentDTO)
+    public OutputStudentDTO save(InputStudentDTO inputStudent)
             throws ApplicantDoesNotExistException,
             WrongStudentEmailException,
             StudentEmailExistException {
-        validInputStudentDTO(inputStudentDTO);
-        if (studentRepository.findByEmail(inputStudentDTO.getEmail()).orElse(null) != null) {
-            throw new StudentEmailExistException(
-                    "Student with this email already exist, inputted email: " + inputStudentDTO.getEmail()
-            );
-        }
-        StudentEntity savedStudent = studentRepository.save(inputStudentDTO.convertToStudentEntity(applicantRepository));
+        studentRepository.findByEmail(inputStudent.getEmail()).ifPresent(
+                foundedStudent -> {
+                    throw new StudentEmailExistException(
+                            "Student with this email already exist, inputted email: " + inputStudent.getEmail()
+                    );
+                }
+        );
+        StudentEntity savedStudent = studentRepository.save(inputStudent.convertToStudentEntity(applicantRepository));
         return new OutputStudentDTO(savedStudent);
     }
 
     public OutputStudentDTO findById(Long id)
             throws StudentDoesNotExistException,
             ApplicantDoesNotExistException {
-        StudentEntity foundedStudent = studentRepository.findById(id).orElse(null);
-        if (foundedStudent == null) {
-            throw new StudentDoesNotExistException(
-                    "Student with this id does not exist, inputted id: " + id
-            );
-        }
+        StudentEntity foundedStudent = studentRepository.findById(id).orElseThrow(
+                () -> new StudentDoesNotExistException(
+                        "Student with this id does not exist, inputted id: " + id
+                )
+        );
         return new OutputStudentDTO(foundedStudent);
     }
 
     public OutputStudentDTO findByApplicant_Id(Long applicant_id)
             throws ApplicantDoesNotExistException,
             StudentDoesNotExistException {
-        if (applicantRepository.findById(applicant_id).orElse(null) == null) {
-            throw new ApplicantDoesNotExistException(
-                    "Applicant with this id does not exist, inputted id: " + applicant_id
-            );
-        }
-        StudentEntity foundedStudent = studentRepository.findByApplicant_Id(applicant_id).orElse(null);
-        if (foundedStudent == null) {
-            throw new StudentDoesNotExistException(
-                    "Student with this applicant id does not exist, inputted applicant id: " + applicant_id
-            );
-        }
+        applicantRepository.findById(applicant_id).orElseThrow(
+                () -> new ApplicantDoesNotExistException(
+                        "Applicant with this id does not exist, inputted id: " + applicant_id
+                )
+        );
+        StudentEntity foundedStudent = studentRepository.findByApplicant_Id(applicant_id).orElseThrow(
+                () -> new StudentDoesNotExistException(
+                        "Student with this applicant id does not exist, inputted applicant id: " + applicant_id
+                )
+        );
         return new OutputStudentDTO(foundedStudent);
     }
 
     public OutputStudentDTO findByEmail(String email)
-            throws WrongStudentEmailException,
-            StudentDoesNotExistException,
-            ApplicantDoesNotExistException {
+            throws ApplicantDoesNotExistException,
+            WrongStudentEmailException,
+            StudentDoesNotExistException {
         if (!Pattern.compile(StudentRegexes.EMAIL_REGEX).matcher(email).matches()) {
             throw new WrongStudentEmailException(
                     "Wrong student email!\n"
@@ -96,12 +78,11 @@ public class StudentService {
                     + "inputted email: " + email
             );
         }
-        StudentEntity foundedStudent = studentRepository.findByEmail(email).orElse(null);
-        if (foundedStudent == null) {
-            throw new StudentDoesNotExistException(
-                    "Student with this email does not exist, inputted email: " + email
-            );
-        }
+        StudentEntity foundedStudent = studentRepository.findByEmail(email).orElseThrow(
+                () -> new StudentDoesNotExistException(
+                        "Student with this email does not exist, inputted email: " + email
+                )
+        );
         return new OutputStudentDTO(foundedStudent);
     }
 
@@ -114,29 +95,27 @@ public class StudentService {
         return outputStudentDTOList;
     }
 
-    public OutputStudentDTO updateById(Long id, InputStudentDTO inputStudentDTO)
-            throws StudentDoesNotExistException,
-            ApplicantDoesNotExistException,
+    public OutputStudentDTO updateById(Long id, InputStudentDTO inputApplicantDTO)
+            throws ApplicantDoesNotExistException,
             WrongStudentEmailException,
+            StudentDoesNotExistException,
             StudentEmailExistException {
-        StudentEntity updatableStudent = studentRepository.findById(id).orElse(null);
-        if (updatableStudent == null) {
-            throw new StudentDoesNotExistException(
-                    "Student with this id does not exist, inputted id: " + id
-            );
-        }
-        validInputStudentDTO(inputStudentDTO);
-        if (!Objects.equals(inputStudentDTO.getEmail(), updatableStudent.getEmail())
-                && studentRepository.findByEmail(inputStudentDTO.getEmail()).orElse(null) != null) {
+        StudentEntity updatableStudent = studentRepository.findById(id).orElseThrow(
+                () -> new StudentDoesNotExistException(
+                        "Student with this id does not exist, inputted id: " + id
+                )
+        );
+        if (!Objects.equals(inputApplicantDTO.getEmail(), updatableStudent.getEmail())
+                && studentRepository.findByEmail(inputApplicantDTO.getEmail()).orElse(null) != null) {
             throw new StudentEmailExistException(
-                    "Student with this email already exist, inputted email: " + inputStudentDTO.getEmail()
+                    "Student with this email already exist, inputted email: " + inputApplicantDTO.getEmail()
             );
         }
-        StudentEntity inputStudent = inputStudentDTO.convertToStudentEntity(applicantRepository);
-        updatableStudent.setApplicant(inputStudent.getApplicant());
-        updatableStudent.setContract(inputStudent.getContract());
-        updatableStudent.setScholarship(inputStudent.getScholarship());
-        updatableStudent.setEmail(inputStudent.getEmail());
+        StudentEntity inputStudentEntity = inputApplicantDTO.convertToStudentEntity(applicantRepository);
+        updatableStudent.setApplicant(inputStudentEntity.getApplicant());
+        updatableStudent.setContract(inputStudentEntity.getContract());
+        updatableStudent.setScholarship(inputStudentEntity.getScholarship());
+        updatableStudent.setEmail(inputStudentEntity.getEmail());
         StudentEntity savedStudent = studentRepository.save(updatableStudent);
         return new OutputStudentDTO(savedStudent);
     }
@@ -144,12 +123,11 @@ public class StudentService {
     public OutputStudentDTO deleteById(Long id)
             throws StudentDoesNotExistException,
             ApplicantDoesNotExistException {
-        StudentEntity foundedStudent = studentRepository.findById(id).orElse(null);
-        if (foundedStudent == null) {
-            throw new StudentDoesNotExistException(
-                    "Student with this id does not exist, inputted id: " + id
-            );
-        }
+        StudentEntity foundedStudent = studentRepository.findById(id).orElseThrow(
+                () -> new StudentDoesNotExistException(
+                        "Student with this id does not exist, inputted id: " + id
+                )
+        );
         studentRepository.deleteById(id);
         return new OutputStudentDTO(foundedStudent);
     }

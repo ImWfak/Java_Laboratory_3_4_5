@@ -1,7 +1,7 @@
 package edu.controllers;
 
-import edu.DTO.InputStudentDTO;
-import edu.DTO.OutputStudentDTO;
+import edu.DTOs.InputDTOs.InputStudentDTO;
+import edu.DTOs.OutputDTOs.OutputStudentDTO;
 import edu.exceptions.applicantExceptions.ApplicantDoesNotExistException;
 import edu.exceptions.studentExceptions.StudentDoesNotExistException;
 import edu.exceptions.studentExceptions.StudentEmailExistException;
@@ -20,9 +20,9 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping("/save")
-    public ResponseEntity save(@RequestBody InputStudentDTO inputStudentDTO) {
+    public ResponseEntity save(@RequestBody InputStudentDTO inputStudent) {
         try {
-            OutputStudentDTO outputStudentDTO = studentService.save(inputStudentDTO);
+            OutputStudentDTO outputStudentDTO = studentService.save(inputStudent);
             return ResponseEntity.ok().body(outputStudentDTO);
         }
         catch (
@@ -90,10 +90,10 @@ public class StudentController {
     @PatchMapping("/updateById")
     public ResponseEntity updateById(
             @RequestParam("id") Long id,
-            @RequestBody InputStudentDTO inputStudentDTO
+            @RequestBody InputStudentDTO inputStudent
     ) {
         try {
-            OutputStudentDTO outputStudentDTO = studentService.updateById(id, inputStudentDTO);
+            OutputStudentDTO outputStudentDTO = studentService.updateById(id, inputStudent);
             return ResponseEntity.ok().body(outputStudentDTO);
         }
          catch (

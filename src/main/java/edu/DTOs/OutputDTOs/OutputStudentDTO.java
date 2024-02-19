@@ -1,23 +1,20 @@
-package edu.DTO;
+package edu.DTOs.OutputDTOs;
 
-import edu.entities.ApplicantEntity;
 import edu.entities.StudentEntity;
 import edu.exceptions.applicantExceptions.ApplicantDoesNotExistException;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class OutputStudentDTO {
     private Long id;
-    private ApplicantEntity applicant;
+    private Long applicant_id;
     private Boolean contract;
     private Boolean scholarship;
     private String email;
+
+    private static Boolean recursive = false;
 
     public OutputStudentDTO(StudentEntity student)
             throws ApplicantDoesNotExistException {
@@ -25,7 +22,7 @@ public class OutputStudentDTO {
             throw new ApplicantDoesNotExistException("Applicant does not exist");
         }
         id = student.getId();
-        applicant = student.getApplicant();
+        applicant_id = student.getApplicant().getId();
         contract = student.getContract();
         scholarship = student.getScholarship();
         email = student.getEmail();

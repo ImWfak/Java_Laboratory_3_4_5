@@ -23,8 +23,8 @@ public enum RoleEnum {
         }
         throw new UnknownValueForRoleEnum(
                 "This role does not exist!\n"
-                + "available roles: " + Arrays.toString(RoleEnum.values()) + "\n"
-                + "inputted role: " + role
+                        + "available roles: " + Arrays.toString(RoleEnum.values()) + "\n"
+                        + "inputted role: " + role
         );
     }
 }
